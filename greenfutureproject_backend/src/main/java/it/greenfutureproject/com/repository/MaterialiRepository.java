@@ -22,5 +22,5 @@ public interface MaterialiRepository extends JpaRepository<Materiale, UUID> {
 	Page<Materiale> findByRaccolta(String raccolta, Pageable pageable);
 	
 	@Query("SELECT m from Materiale m where m.user = :user")
-	Page<Materiale> findByUser(String raccolta, Pageable pageable);
+	Page<Materiale> findByUser(String user, Pageable pageable);
 }

@@ -45,7 +45,7 @@ public class RaccolteService {
 	public Raccolta createRaccolta(RaccoltaPayload racc) {
 		raccolteRepo.findByNome(racc.getNome()).ifPresent(r -> {
 			throw new BadRequestException("La raccolta " + 
-					racc.getNome() + " è stata già inserita.");
+					r.getNome() + " è stata già inserita.");
 		});
 		Raccolta newRacc = new Raccolta(racc.getNome());
 		return raccolteRepo.save(newRacc);

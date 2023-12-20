@@ -13,7 +13,6 @@ public class UserPayload {
 	@NotNull(message = "Inserisci lo username.")
 	String username;
 	@NotNull(message = "Inserisci la password.")
-	@Size(min = 8, max = 20, message = "Min 8, max 20 chars")
 	String password;
 	@Email(message = "Inserisci l'indirizzo email.")
 	String email;
