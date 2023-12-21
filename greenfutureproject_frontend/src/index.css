@@ -17,9 +17,6 @@
 
 body {
   margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-width: 100vw;
   min-height: 100vh;
   background-color: rgba(53, 154, 103, 0.354)

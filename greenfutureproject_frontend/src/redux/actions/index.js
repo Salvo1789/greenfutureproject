@@ -16,14 +16,19 @@ export const GET_USER_DATA = "GET_USER_DATA";
 //Raccolte actions
 
 export const getAllRaccolteAction = () => {
-  return async (dispatch) => {
-    const endpoint = "http://localhost:3000/raccolte";
-
+  return async (dispatch, getState) => {
+    const endpoint = "http://localhost:3001/raccolte";
+    const token = getState().auth.token;
     console.log(endpoint);
     try {
-      const resp = await fetch(endpoint);
+      const resp = await fetch(endpoint, {
+        method:"GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      }})
       if (resp.ok) {
-        const dataRaccolte = await resp.json();
+        let dataRaccolte = await resp.json();
         dispatch({ type: GET_RACCOLTE, payload: dataRaccolte });
       } else {
         alert("Errore qualcosa è andato storto");
@@ -67,7 +72,7 @@ export const createRaccoltaAction = savedRaccolta => {
 
   export const getAllMaterialiAction = () => {
     return async (dispatch) => {
-      const endpoint = "http://localhost:3000/materiali";
+      const endpoint = "http://localhost:3001/materiali";
   
       console.log(endpoint);
       try {

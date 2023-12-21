@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.greenfutureproject.com.exceptions.NotFoundException;
 import it.greenfutureproject.com.model.User;
 import it.greenfutureproject.com.payload.UserPayload;
 import it.greenfutureproject.com.service.UsersService;
@@ -52,6 +54,13 @@ public class UsersController {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteUser(@PathVariable UUID id) {
 		usersService.deleteUser(id);
+	}
+	
+	@GetMapping("/me")
+	public User getCurrentUser(Authentication authentication) throws NotFoundException {
+		User userDetails = (User) authentication.getPrincipal();
+		UUID userId = userDetails.getId();
+		return usersService.findById(userId);
 	}
 	
 }

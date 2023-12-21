@@ -9,7 +9,7 @@ const initialState = {
       case GET_RACCOLTE:
         return {
           ...state,
-          avaiable: action.payload,
+          content: action.payload,
         };
       default:
         return state;

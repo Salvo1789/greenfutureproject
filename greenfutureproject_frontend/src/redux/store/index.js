@@ -16,7 +16,7 @@ const persistConfig = {
   storage,
   transforms: [
     encryptTransform({
-      secretKey: process.env.REACT_APP_PERSIST_KEY,
+      secretKey: import.meta.env.VITE_REACT_APP_PERSIST_KEY,
     }),
   ],
 };
@@ -26,7 +26,6 @@ const bigReducer = combineReducers({
   raccolte: raccolteReducer,
   materiale: materialeReducer,
   materiali: materialiReducer,
-  cart: cartReducer,
   user: userReducer,
   auth: authReducer,
 });
