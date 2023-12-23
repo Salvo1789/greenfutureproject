@@ -65,18 +65,47 @@ export const createRaccoltaAction = savedRaccolta => {
     };
   }
 
-  export const deleteRaccoltaAction = index => ({ type: DELETE_RACCOLTA, payload: index });
+  export const deleteRaccoltaAction = id => {
+    return async (dispatch, getState) => {
+      const endpoint = `http://localhost:3001/raccolte/${id}`;
+      const token = getState().auth.token;
+
+      console.log(endpoint);
+      try {
+        const resp = await fetch(endpoint,{
+          method:"DELETE",
+          headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        }});
+        if (resp.ok) {
+          
+          dispatch({ type: DELETE_RACCOLTA, payload: id });
+        } else {
+          alert("Errore qualcosa è andato storto");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  }
 
 
   //Materiali actions
 
   export const getAllMaterialiAction = () => {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
       const endpoint = "http://localhost:3001/materiali";
-  
+      const token = getState().auth.token;
+
       console.log(endpoint);
       try {
-        const resp = await fetch(endpoint);
+        const resp = await fetch(endpoint,{
+          method:"GET",
+          headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        }});
         if (resp.ok) {
           const dataMateriali = await resp.json();
           dispatch({ type: GET_MATERIALI, payload: dataMateriali });
@@ -115,7 +144,30 @@ export const createRaccoltaAction = savedRaccolta => {
       };
     }
   
-    export const deleteMaterialeAction = index => ({ type: DELETE_MATERIALE, payload: index });
+    export const deleteMaterialeAction = id => {
+      return async (dispatch, getState) => {
+        const endpoint = `http://localhost:3001/materiali/${id}`;
+        const token = getState().auth.token;
+  
+        console.log(endpoint);
+        try {
+          const resp = await fetch(endpoint,{
+            method:"DELETE",
+            headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          }});
+          if (resp.ok) {
+            
+            dispatch({ type: DELETE_MATERIALE, payload: id });
+          } else {
+            alert("Errore qualcosa è andato storto");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
 
 
     //Auth actions

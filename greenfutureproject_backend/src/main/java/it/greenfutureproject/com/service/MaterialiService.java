@@ -13,6 +13,7 @@ import it.greenfutureproject.com.exceptions.BadRequestException;
 import it.greenfutureproject.com.exceptions.NotFoundException;
 import it.greenfutureproject.com.model.Materiale;
 import it.greenfutureproject.com.model.Raccolta;
+import it.greenfutureproject.com.model.User;
 import it.greenfutureproject.com.payload.MaterialePayload;
 import it.greenfutureproject.com.payload.RaccoltaPayload;
 import it.greenfutureproject.com.repository.MaterialiRepository;
@@ -21,6 +22,10 @@ import it.greenfutureproject.com.repository.MaterialiRepository;
 public class MaterialiService {
 	@Autowired
 	private MaterialiRepository materialiRepo;
+	@Autowired
+	private RaccolteService raccolteService;
+	@Autowired
+	private UsersService usersService;
 	
 	public Page<Materiale> find(int page, int size, String sortBy) {
 		if (size < 0)
@@ -45,7 +50,9 @@ public class MaterialiService {
 			throw new BadRequestException("Il materiale " + 
 					mat.getNome() + " è stato già inserito.");
 		});
-		Materiale newMat = new Materiale(mat.getNome(), mat.getNote());
+		Raccolta racc = raccolteService.findByNome(mat.getRaccolta());
+		User user = usersService.findById(mat.getUser());
+		Materiale newMat = new Materiale(mat.getNome(), mat.getNote(), racc, user);
 		return materialiRepo.save(newMat);
 	}
 	

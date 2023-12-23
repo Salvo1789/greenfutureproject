@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserDataAction, loginAction } from "../redux/actions";
 import React, { useState } from "react";
+import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
@@ -70,6 +71,9 @@ const LoginPage = () => {
         <button type="submit" class="btn btn-primary">
           Submit
         </button>
+        <Link to="/register" className="btn btn-primary">
+          <Button>Register</Button>
+        </Link>
       </form>
     </div>
   );

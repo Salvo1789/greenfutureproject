@@ -6,9 +6,7 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 
 import authReducer from "../reducers/authReducer";
 import userReducer from "../reducers/userReducer";
-import raccoltaReducer from "../reducers/raccoltaReducer";
 import raccolteReducer from "../reducers/raccolteReducer";
-import materialeReducer from "../reducers/materialeReducer";
 import materialiReducer from "../reducers/materialiReducer";
 
 const persistConfig = {
@@ -22,9 +20,7 @@ const persistConfig = {
 };
 
 const bigReducer = combineReducers({
-  raccolta: raccoltaReducer,
   raccolte: raccolteReducer,
-  materiale: materialeReducer,
   materiali: materialiReducer,
   user: userReducer,
   auth: authReducer,

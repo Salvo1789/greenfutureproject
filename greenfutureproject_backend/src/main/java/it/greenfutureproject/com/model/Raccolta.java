@@ -1,6 +1,9 @@
 package it.greenfutureproject.com.model;
 
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -25,7 +28,8 @@ public class Raccolta {
 	private UUID id;
 	private String nome;
 	
-	@OneToMany(mappedBy = "raccolta", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "raccolta")
+	@JsonManagedReference
 	public List<Materiale> listaMateriali = new ArrayList<>();
 
 	public Raccolta(String nome) {

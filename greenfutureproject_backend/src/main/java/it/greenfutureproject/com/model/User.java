@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,7 +36,8 @@ public class User implements UserDetails {
 	private String nome;
 	private String cognome;
 	
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user")
+	@JsonManagedReference
 	private List<Materiale> materialiCaricati = new ArrayList<>();
 	
 	public User(String username, String password, String email,  String nome, String cognome) {
