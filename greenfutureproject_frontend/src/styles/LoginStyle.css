@@ -1,0 +1,14 @@
+#login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: lightgray;
+
+    Button{
+        background-color: lightgray;
+        color: black;
+        margin-block: 1.2rem;
+        margin-inline-end: 1.2rem;
+    }
+}
