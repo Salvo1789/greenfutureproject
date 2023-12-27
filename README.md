@@ -2,7 +2,7 @@
 ---
 Un portale mediante il quale è possibile gestire la piattaforma ecologica creando ed eliminando le raccolte ed i materiali qui inclusi.
 
-Tecnologie utilizzate
+## Tecnologie utilizzate
 ---
 * Front-end: HTML5, SASS, Javascript, Vitejs, React, React-Bootstrap, Redux
 * Back-end: Java, Spring Boot
@@ -10,8 +10,16 @@ Tecnologie utilizzate
 * Testing API: Postman
 * IDE: Visual Studio Code (FE), Eclipse IDE for     Enterprise Java and Web Developers (BE)
 
-Avvio
+## Avvio
 ---
+### Back-End
+
+1. Aprire il progetto Spring Boot su Eclipse presente nella cartella "greenfutureproject_backend"
+
+2. Selezionare la cartella nel Project Explorer e cliccare su "Run" -> "Run as" -> Spring Boot App
+
+### Front-End
+
 1. Su Visual Studio Code, una volta aperto il progetto e startato il server su Eclipse, spostarsi sulla cartella "greenfutureproject_backend"
 
 >cd greenfutureproject_frontend
