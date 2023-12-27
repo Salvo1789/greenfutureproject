@@ -22,6 +22,6 @@ Avvio
 3. Su terminale, tenendo premuto il tasto CTRL, cliccare sul localhost indicato dalla Vite CLI.
 >VITE v5.0.10  ready in 2455 ms
 
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-  ➜  press h + enter to show help
+  >➜  Local:   http://localhost:5173/
+  >➜  Network: use --host to expose
+  >➜  press h + enter to show help
